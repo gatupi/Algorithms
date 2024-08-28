@@ -1,8 +1,11 @@
-﻿namespace FootballMatchDrawing {
-    class Team {
+﻿using FootballMatchDrawing.Models.Interfaces;
 
-        public static readonly string[] TEAM_NAMES = [
-            "Flamengo",
+namespace FootballMatchDrawing.Classes;
+
+class Team : ITeam
+{
+    public static readonly IReadOnlyList<string> TEAM_NAMES = [
+        "Flamengo",
             "Palmeiras",
             "São Paulo",
             "Corinthians",
@@ -22,18 +25,19 @@
             "Chapecoense",
             "América Mineiro",
             "Atlético Goianiense"
-        ];
+    ];
 
-        public Team(string name) {
-            Id = Guid.NewGuid();
-            Name = name;
-        }
+    public Team(string name)
+    {
+        Id = Guid.NewGuid();
+        Name = name;
+    }
 
-        public Guid Id { get; }
-        public string Name { get; }
+    public Guid Id { get; }
+    public string Name { get; }
 
-        public static IEnumerable<Team> CreateTeams(IEnumerable<string> names) {
-            return names.Select(name =>  new Team(name));
-        }
+    public static IEnumerable<Team> CreateTeams(IEnumerable<string> names)
+    {
+        return names.Select(name => new Team(name));
     }
 }

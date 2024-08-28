@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using FootballMatchDrawing.Models.Interfaces;
+using System.Text;
 
 namespace FootballMatchDrawing;
 
@@ -29,7 +30,7 @@ static partial class Utils {
         }
     }
 
-    public static string Stringify(this IEnumerable<Match> matches) {
+    public static string Stringify<T>(this IEnumerable<T> matches) where T : IFootballMatch {
         var sb = new StringBuilder();
         var index = 0;
         foreach (var match in matches) {
